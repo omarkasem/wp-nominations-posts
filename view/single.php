@@ -26,7 +26,7 @@
 
 
 <?php if(get_field('example_figure')){
-    echo wp_get_attachment_image(get_field('example_figure'),'medium');
+    echo wp_get_attachment_image(get_field('example_figure'),'large');
 } ?>
 
 <?php if(get_field('summary_')){

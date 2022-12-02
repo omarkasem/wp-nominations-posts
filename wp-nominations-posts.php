@@ -13,11 +13,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-/**
- * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
- */
 define( 'OK_NOM_POSTS_VERSION', '1.0.0' );
 define( 'OK_NOM_POSTS_NAME', 'wp-nominations-posts' );
 define( 'OK_NOM_POSTS_URL', plugin_dir_url( __FILE__ ) );
