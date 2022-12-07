@@ -15,6 +15,10 @@
     .wp_nom_videos.one img{
         height:auto;
     }
+    .wp_nom_video{
+        position:relative;
+    }
+
     @media (max-width: 600px) {
         .wp_nom_videos { grid-template-columns: repeat(1, 1fr); }
         .video img{
@@ -56,9 +60,10 @@
                         parse_str( parse_url( $url, PHP_URL_QUERY ), $my_array_of_vars );
                         $img_url = 'https://img.youtube.com/vi/'.$my_array_of_vars['v'].'/hqdefault.jpg';
                 }
-                echo '<img src="'.$img_url.'">
-                ';
+                echo '<img src="'.$img_url.'">';
                 ?>
+     
+
             </a>
         </div>
         <?php } ?>

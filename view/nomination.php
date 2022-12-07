@@ -1,10 +1,25 @@
-    <?php $image_id = get_field('example_figure'); ?>
-    <div class="nomination">
-        <div class="div">
-        <h2><?php the_title(); ?></h2>
-    </div>
-        <?php if($image_id){
-            echo '<div class="image" style="background-image:url('.wp_get_attachment_url( $image_id ).')"></div>';
-        } ?>
-        <a class="wp_noms_button" href="<?php the_permalink(); ?>">Read More</a>
-    </div>
+<?php
+$image_id = get_field('example_figure'); 
+$terms = get_the_terms(get_the_ID(),'nomination_category');
+$classes = '';
+if(!empty($terms)){
+    foreach($terms as $term){
+        $classes.= $term->slug.' ';
+    }
+}
+?>
+
+<div class="nomination <?php echo $classes; ?>">
+    <div class="div">
+    <h2><?php the_title(); ?></h2>
+</div>
+    <?php if($image_id){
+        echo '<div class="image" style="background-image:url('.wp_get_attachment_url( $image_id ).')"></div>';
+    } ?>
+
+    <?php if(get_field('summary_')){
+        echo '<div class="summary">'.get_field('summary_').'</div>';
+    } ?>
+
+    <a class="wp_noms_button" href="<?php the_permalink(); ?>">Read More</a>
+</div>

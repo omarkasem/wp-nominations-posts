@@ -1,9 +1,18 @@
 <style>
     .wp_noms{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-column-gap: 2rem;
-        grid-row-gap: 2.5rem;
+        padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    }
+
+    .wp_noms .nomination{
+        display: block;
+        max-width: calc(33% - 30px);
+        flex: 0 0 calc(33% - 30px);
+        width: calc(33% - 30px);
+        margin: 15px;
     }
 
     .wp_noms_button {
@@ -15,7 +24,6 @@
         border: none;
         padding: 10px 20px;
         display: inline-block;
-        margin-top: 10px;
         transition:all .5s;
     }
 
@@ -45,13 +53,41 @@
         top: 3px;
     }
 
+    .wp_noms .summary{
+        overflow: hidden;
+	text-overflow: clip;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+    margin: 10px 0;
+    }
+    .button-group button.active{
+        background:#000;
+        color:#fff;
+    }
+
+    [type=button]:focus, [type=button]:hover, [type=submit]:focus, [type=submit]:hover, button:focus, button:hover{
+        background:#000;
+        color:#fff;
+    }
+
+
     @media (max-width: 1200px) {
-        .wp_noms { grid-template-columns: repeat(2, 1fr); }
+        .wp_noms .nomination { 
+            max-width: calc(50% - 30px);
+            flex: 0 0 calc(50% - 30px);
+            width: calc(50% - 30px);
+         }
     }
 
     
-    @media (max-width: 900px) {
-        .wp_noms { grid-template-columns: repeat(1, 1fr); }
+    @media (max-width: 992px) {
+        .wp_noms .nomination {
+            max-width: calc(100% - 30px);
+            flex: 0 0 calc(100% - 30px);
+            width: calc(100% - 30px);
+            margin: 15px;
+        }
     }
 
 </style>
@@ -59,7 +95,7 @@
 
 
 <?php 
-$count = 3;
+$count = -1;
 $args = array(
     'posts_per_page'=>$count,
     'post_type'=>'wp_nomination'
@@ -68,6 +104,19 @@ $query = new WP_Query($args);
 
 if($query->have_posts()){
 ?>
+<?php 
+    $terms = get_terms('nomination_category',array('hide_empty'=>true,));
+    if(!empty($terms)){
+?>
+<h5 style="display:inline-block;margin-right:5px;">Filter By Category: </h5>
+<div style="display:inline-block;" class="button-group filter-button-group">
+  <button class="active" data-filter="*">All</button>
+    <?php foreach($terms as $term){ ?>
+        <button data-filter=".<?php echo $term->slug; ?>"><?php echo $term->name; ?></button>
+    <?php } ?>
+</div>
+<?php } ?>
+
 <div class="wp_noms">
     <?php 
     while ( $query->have_posts() ) {
@@ -76,10 +125,7 @@ if($query->have_posts()){
     }
     ?>
 </div>
-
-<?php if($query->found_posts > $count){
-        echo '<div style="text-align:center;"><a full_count="'.$query->found_posts.'" class="load_more wp_noms_button" href="">Load More <img style="display:none;" src="'.site_url('wp-includes/images/wpspin.gif').'"></a></div>';
-    } ?>
+<br><br>
 
 <?php }else{
     echo '<p>There is no nominations.</p>';

@@ -35,6 +35,8 @@ class App{
 
     function archive_shortcode($atts){
         ob_start();
+
+        wp_enqueue_script( OK_NOM_POSTS_NAME.'isotope', OK_NOM_POSTS_URL.'public/isotope.pkgd.min.js', array('jquery'),OK_NOM_POSTS_VERSION,true );
         wp_enqueue_script( OK_NOM_POSTS_NAME, OK_NOM_POSTS_URL.'public/app.js', array('jquery'),OK_NOM_POSTS_VERSION,true );
 
         wp_localize_script( OK_NOM_POSTS_NAME, 'ajax_object',

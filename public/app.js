@@ -7,27 +7,27 @@ const lightbox = GLightbox({
 }
 
 jQuery(document).ready(function($){
+    if($('.wp_noms').isotope){
 
-    $('.load_more').on('click',function(e){
-        e.preventDefault();
-        var img = $(this).find('img');
-        var full_count = $(this).attr('full_count');
-        img.show();
-        jQuery.ajax({
-            type: "GET",
-            url: ajax_object.ajax_url,
-            data: { action: 'wp_nom_load_more',exist:$('.wp_noms > div').length},
-            success: function(response){
-                img.hide();
-                $('.wp_noms').append(response);
-                if($('.wp_noms > div').length >= full_count){
-                    $('.load_more').hide();
-                }
-            },
-            error: function(error){
-                console.log("bad");
+        var $grid = $('.wp_noms').isotope({
+            itemSelector: '.nomination',
+            layoutMode : 'masonry',
+            masonry: {
+                columnWidth: 5
             }
+
         });
 
-    });
+        // filter items on button click
+        $('.filter-button-group').on( 'click', 'button', function() {
+            var filterValue = $(this).attr('data-filter');
+            $grid.isotope({ filter: filterValue });
+        });
+
+        $('.button-group button').on('click', function() {
+            $('.button-group').find('button').removeClass('active');
+            $(this).addClass('active');
+        });
+    }
+   
 });
