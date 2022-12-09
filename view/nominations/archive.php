@@ -121,7 +121,7 @@ if($query->have_posts()){
     <?php 
     while ( $query->have_posts() ) {
         $query->the_post();
-        include(OK_NOM_POSTS_PATH . 'view/nomination.php');
+        include(OK_NOM_POSTS_PATH . 'view/nominations/nomination.php');
     }
     ?>
 </div>
