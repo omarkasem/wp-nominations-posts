@@ -28,24 +28,27 @@
 
 </style>
 
-
+<div id="single-nom">
 <?php if(get_field('example_figure')){
     echo wp_get_attachment_image(get_field('example_figure'),'large');
 } ?>
 
 <?php if(get_field('summary_')){
-    echo '<p><b>Summary: </b> '.get_field('summary_').'</p>';
+    echo '<div><b>Summary: </b> '.get_field('summary_').'</div>';
 } ?>
 
 <?php if(get_field('quote')){
-    echo '<p><b>Quote: </b> '.get_field('quote').'</p>';
+    echo '<div><b>Quote: </b> '.get_field('quote').'</div>';
 } ?>
 
 <?php if(get_field('technique')){
-    echo '<p><b>Technique: </b> '.get_field('technique').'</p>';
+    echo '<div><b>Technique: </b> '.get_field('technique').'</div>';
 } ?>
 
+<?php if(get_field('reference_')){
 
+    echo '<div><b>Reference: </b><p> '.linkifyText2(wp_strip_all_tags(get_field('reference_'))).'</p></div>';
+} ?>
 
 
 <?php if(get_field('videos_')){ ?>
@@ -69,3 +72,5 @@
         <?php } ?>
     </div>
 <?php } ?>
+	
+</div>

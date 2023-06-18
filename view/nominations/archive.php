@@ -15,25 +15,16 @@
         margin: 15px;
     }
 
-    .wp_noms_button {
-        text-decoration: none!important;
-        background: #000;
-        border-radius: 5px;
-        color: #fff;
-        outline: none;
-        border: none;
-        padding: 10px 20px;
-        display: inline-block;
-        transition:all .5s;
-    }
 
-    .wp_noms_button:hover{
-        background:#252525;
-        color:#fff;
-    }
 
     .wp_noms h2{
         font-size:20px;
+		    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
     }
     .wp_noms .image{
         background-size: cover;
@@ -57,7 +48,7 @@
         overflow: hidden;
 	text-overflow: clip;
 	display: -webkit-box;
-	-webkit-line-clamp: 2;
+	-webkit-line-clamp: 4;
 	-webkit-box-orient: vertical;
     margin: 10px 0;
     }
@@ -71,6 +62,17 @@
         color:#fff;
     }
 
+	
+	.button-group button {
+    padding: 8px 15px;
+    border: none;
+    box-shadow: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+	
+	
 
     @media (max-width: 1200px) {
         .wp_noms .nomination { 
@@ -105,7 +107,7 @@ $query = new WP_Query($args);
 if($query->have_posts()){
 ?>
 <?php 
-    $terms = get_terms('nomination_category',array('hide_empty'=>true,));
+    $terms = get_terms('nomination_category',array('hide_empty'=>true));
     if(!empty($terms)){
 ?>
 <h5 style="display:inline-block;margin-right:5px;">Filter By Category: </h5>

@@ -60,7 +60,7 @@ class PostType{
             "rest_base" => "",
             "rest_controller_class" => "WP_REST_Posts_Controller",
             "rest_namespace" => "wp/v2",
-            "has_archive" => false,
+            "has_archive" => true,
             "show_in_menu" => true,
             "show_in_nav_menus" => true,
             "delete_with_user" => false,
@@ -128,7 +128,7 @@ class PostType{
             "rest_base" => "",
             "rest_controller_class" => "WP_REST_Posts_Controller",
             "rest_namespace" => "wp/v2",
-            "has_archive" => false,
+            "has_archive" => true,
             "show_in_menu" => true,
             "show_in_nav_menus" => true,
             "delete_with_user" => false,
@@ -189,7 +189,7 @@ class PostType{
             "labels" => $labels,
             "public" => true,
             "publicly_queryable" => true,
-            "hierarchical" => false,
+            "hierarchical" => true,
             "show_ui" => true,
             "show_in_menu" => true,
             "show_in_nav_menus" => true,
@@ -206,6 +206,61 @@ class PostType{
             "show_in_graphql" => false,
         ];
         register_taxonomy( "nomination_category", [ "wp_nomination" ], $args );
+		
+		
+        $labels = [
+            "name" => esc_html__( "Authors", "hello-elementor" ),
+            "singular_name" => esc_html__( "Author", "hello-elementor" ),
+            "menu_name" => esc_html__( "Authors", "hello-elementor" ),
+            "all_items" => esc_html__( "All Authors", "hello-elementor" ),
+            "edit_item" => esc_html__( "Edit Author", "hello-elementor" ),
+            "view_item" => esc_html__( "View Author", "hello-elementor" ),
+            "update_item" => esc_html__( "Update Author name", "hello-elementor" ),
+            "add_new_item" => esc_html__( "Add new Author", "hello-elementor" ),
+            "new_item_name" => esc_html__( "New Author name", "hello-elementor" ),
+            "parent_item" => esc_html__( "Parent Author", "hello-elementor" ),
+            "parent_item_colon" => esc_html__( "Parent Author:", "hello-elementor" ),
+            "search_items" => esc_html__( "Search Authors", "hello-elementor" ),
+            "popular_items" => esc_html__( "Popular Authors", "hello-elementor" ),
+            "separate_items_with_commas" => esc_html__( "Separate Authors with commas", "hello-elementor" ),
+            "add_or_remove_items" => esc_html__( "Add or remove Authors", "hello-elementor" ),
+            "choose_from_most_used" => esc_html__( "Choose from the most used Authors", "hello-elementor" ),
+            "not_found" => esc_html__( "No Authors found", "hello-elementor" ),
+            "no_terms" => esc_html__( "No Authors", "hello-elementor" ),
+            "items_list_navigation" => esc_html__( "Authors list navigation", "hello-elementor" ),
+            "items_list" => esc_html__( "Authors list", "hello-elementor" ),
+            "back_to_items" => esc_html__( "Back to Authors", "hello-elementor" ),
+            "name_field_description" => esc_html__( "The name is how it appears on your site.", "hello-elementor" ),
+            "parent_field_description" => esc_html__( "Assign a parent term to create a hierarchy. The term Jazz, for example, would be the parent of Bebop and Big Band.", "hello-elementor" ),
+            "slug_field_description" => esc_html__( "The slug is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens.", "hello-elementor" ),
+            "desc_field_description" => esc_html__( "The description is not prominent by default; however, some themes may show it.", "hello-elementor" ),
+        ];
+    
+        
+        $args = [
+            "label" => esc_html__( "Authors", "hello-elementor" ),
+            "labels" => $labels,
+            "public" => true,
+            "publicly_queryable" => true,
+            "hierarchical" => true,
+            "show_ui" => true,
+            "show_in_menu" => true,
+            "show_in_nav_menus" => true,
+            "query_var" => true,
+            "rewrite" => [ 'slug' => 'nomination_author', 'with_front' => true, ],
+            "show_admin_column" => true,
+            "show_in_rest" => true,
+            "show_tagcloud" => false,
+            "rest_base" => "nomination_author",
+            "rest_controller_class" => "WP_REST_Terms_Controller",
+            "rest_namespace" => "wp/v2",
+            "show_in_quick_edit" => true,
+            "sort" => true,
+            "show_in_graphql" => false,
+        ];
+        register_taxonomy( "nomination_author", [ "wp_nomination" ], $args );
+		
+		
     }
     
 

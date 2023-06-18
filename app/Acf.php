@@ -78,6 +78,28 @@ class Acf{
                         'media_upload' => 0,
                         'delay' => 0,
                     ),
+					
+                    array(
+                        'key' => 'field_638813989t008',
+                        'label' => 'System',
+                        'name' => 'system_',
+                        'aria-label' => '',
+                        'type' => 'wysiwyg',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
+                        'tabs' => 'all',
+                        'toolbar' => 'full',
+                        'media_upload' => 0,
+                        'delay' => 0,
+                    ),
+					
                     array(
                         'key' => 'field_638813a19c006',
                         'label' => 'Quote',
@@ -118,6 +140,28 @@ class Acf{
                         'media_upload' => 1,
                         'delay' => 0,
                     ),
+					
+                    array(
+                        'key' => 'field_638813aa9c014',
+                        'label' => 'Reference',
+                        'name' => 'reference_',
+                        'aria-label' => '',
+                        'type' => 'wysiwyg',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
+                        'tabs' => 'all',
+                        'toolbar' => 'full',
+                        'media_upload' => 1,
+                        'delay' => 0,
+                    ),
+					
                     array(
                         'key' => 'field_638813b59c008',
                         'label' => 'Videos',
@@ -270,7 +314,7 @@ class Acf{
                         'taxonomy' => '',
                         'return_format' => 'id',
                         'multiple' => 0,
-                        'allow_null' => 0,
+                        'allow_null' => 1,
                         'ui' => 1,
                     ),
                 ),

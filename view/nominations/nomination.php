@@ -4,8 +4,8 @@ $terms = get_the_terms(get_the_ID(),'nomination_category');
 $classes = '';
 if(!empty($terms)){
     foreach($terms as $term){
-        $classes.= $term->slug.' ';
-    }
+		$classes.= $term->slug.' ';
+	}
 }
 ?>
 
@@ -21,5 +21,5 @@ if(!empty($terms)){
         echo '<div class="summary">'.get_field('summary_').'</div>';
     } ?>
 
-    <a class="wp_noms_button" href="<?php the_permalink(); ?>">Read More</a>
+    <a class="wp_noms_button elementor-button-link elementor-button elementor-size-sm" href="<?php the_permalink(); ?>">Read More</a>
 </div>

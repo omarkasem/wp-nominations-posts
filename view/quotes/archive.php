@@ -1,19 +1,22 @@
 <style>
     .wp_quotes{
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-column-gap: 2rem;
-        grid-row-gap: 2.5rem;
+        grid-template-columns: repeat(1, 1fr);
+        grid-column-gap: 1rem;
     }
 
-
+	
     .wp_quotes .quote{
         display: block;
-        max-width: calc(50% - 30px);
+/*         max-width: calc(50% - 30px);
         flex: 0 0 calc(50% - 30px);
-        width: calc(50% - 30px);
+        width: calc(50% - 30px); */
         margin: 15px;
     }
+	
+	.wp_quotes .quote h1{
+		margin-bottom:0;
+	}
 
     .wp_quotes_button {
         text-decoration: none!important;
@@ -33,8 +36,15 @@
     }
 
     .wp_quotes h2{
-        font-size:20px;
+        font-size:30px;
+		margin-top:0;
+		margin-bottom:5px;
+		line-height: 1.2em;
     }
+	
+	.wp_quotes p:first-of-type b{
+		font-size:24px;
+	}
     .wp_quotes .image{
         background-size: cover;
     height: 300px;

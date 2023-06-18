@@ -10,7 +10,23 @@ class App{
         add_action( 'wp_ajax_wp_nom_load_more',array($this,'load_more'));
         add_action( 'wp_ajax_nopriv_wp_nom_load_more',array($this,'load_more'));
         
+		add_action( 'template_redirect', array($this,'fix_breadcrumbs') );
+
     }
+	
+	function fix_breadcrumbs(){
+		if(is_post_type_archive('wp_quote')){
+			wp_redirect(home_url().'/quotes');
+			exit;
+		}
+		
+		if(is_post_type_archive('wp_nomination')){
+			wp_redirect(home_url().'/nominations');
+			exit;
+		}
+		
+	}
+	
 
     function load_more(){
         $exist = intval($_GET['exist']);

@@ -1,6 +1,6 @@
 <div class="quote">
     <h1><?php echo $i; ?></h1>
-    <h2><?php the_title(); ?></h2>
+    <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
     <?php if(get_field('description')){
         echo '<p><b>Description: </b> '.get_field('description').'</p>';
     } ?>
